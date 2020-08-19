@@ -112,10 +112,10 @@ button.onclick = function() {
     passphraseArray.sort(function(a, b){return b.entropy - a.entropy});
 
   // Outputing the sorted passphrase suggestions and entropy to the lowercontent section of the HTML
-      var bottomSectionOutput = "<br>Results below ranked from strongest to weakest passphrase<br><br>";
+      var bottomSectionOutput = "<br><b>Passphrase results ranked from the strongest to weakest passphrase:<br><br></b>";
       for (var i = 0; i < 5; i++) {
          if (passphraseArray[i] == null) break;
-         bottomSectionOutput = bottomSectionOutput + passphraseArray[i].pass + " - Has Entropy: " + passphraseArray[i].entropy.toFixed(2) + " " + passphraseArray[i].latestPC + " db " + passphraseArray[i].inDB + "<br>";
+         bottomSectionOutput = bottomSectionOutput + passphraseArray[i].pass + " - Has Entropy: " + passphraseArray[i].entropy.toFixed(2) +   "<br><br>";
       }
       lowercontent.innerHTML = bottomSectionOutput;
 
