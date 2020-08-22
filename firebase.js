@@ -1,4 +1,4 @@
-  //  Details for connecting to Firebase Database (DB)
+    //  Details for connecting to Firebase Database (DB)
   var firebaseConfig = {
     apiKey: "AIzaSyC3f1ul2mb_Rl7PEB87jLIBX27YW9eGHEc",
     authDomain: "passwords-a1f98.firebaseapp.com",
