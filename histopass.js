@@ -83,7 +83,7 @@ getLastUrl(function(lastUrl) {
 var bottomSectionOutput = "";
 
 button.onclick = async function() {
-  bottomSectionOutput = "<br><b>Passphrase results ranked from strongest to weakest:<br><br></b>";
+  bottomSectionOutput = "<br><b>Your Passphrase results ranked from strongest to weakest:<br><br></b>";
   passphraseArray.sort(function(a, b){return b.entropy - a.entropy});
   for (var i = 0; i < 5; i++) {
     if (passphraseArray[i] == null) break;
@@ -95,7 +95,8 @@ button.onclick = async function() {
       passphraseArray.sort(function(a, b){return b.entropy - a.entropy});
       for (var j = 0; j < 5; j++) {
         if (passphraseArray[j] == null) break;
-        bottomSectionOutput = bottomSectionOutput + passphraseArray[j].pass + " - Has Entropy: " + passphraseArray[j].entropy.toFixed(2) + passphraseArray[j].pIDB  + "<br><br>";
+        var itemNo = j + 1;
+        bottomSectionOutput = bottomSectionOutput + itemNo + ": <b><i>" + passphraseArray[j].pass + "</b></i> has Entropy: <b><i> " + passphraseArray[j].entropy.toFixed(2)+ "</b></i>" + passphraseArray[j].pIDB  + "<br><br>";
       }
       lowercontent.innerHTML = bottomSectionOutput;
     } else {
@@ -114,12 +115,11 @@ async function dbcheck (data) {
       if (passphraseArray[data].entropy > 23.77) {
         passphraseArray[data].entropy = 23.77;
       }
-      passphraseArray[data].pIDB = " - this passphrase is present in RockYou";
-      bottomSectionOutput = bottomSectionOutput + passphraseArray[j].pass + " - Has Entropy: " + passphraseArray[j].entropy.toFixed(2) + passphraseArray[j].pIDB  + "<br><br>";
+      passphraseArray[data].pIDB = " and is present in the RockYou leaked password list.";
     } else {
-      passphraseArray[data].pIDB = " - not in RockYou";
-      bottomSectionOutput = bottomSectionOutput + passphraseArray[j].pass + " - Has Entropy: " + passphraseArray[j].entropy.toFixed(2) + passphraseArray[j].pIDB  + "<br><br>";
+      passphraseArray[data].pIDB = " - and is not present in the RockYou leaked password list.";
     }
   });
 
 }
+
